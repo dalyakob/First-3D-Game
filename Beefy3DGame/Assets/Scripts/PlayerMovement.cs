@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float forwardForce = 1000f; 
     [SerializeField] float sideWaysForce = 1000f;
     public float jumpForce = 5000f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,8 +16,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
     }
     private void FixedUpdate()
     { 
@@ -35,14 +34,10 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Move up");
             playerMovement.AddForce(0, jumpForce * Time.deltaTime, 0, ForceMode.VelocityChange);
+        } 
+        if(playerMovement.position.y < -1)
+        {
+            FindObjectOfType<GameManager>().EndGame();
         }
-        //if (moveLeft)
-        //{
-        //    playerMovement.AddForce(-300, 0, 0);
-        //}
-        //if (moveLeft)
-        //{
-        //    playerMovement.AddForce(-300, 0, 0);
-        //}
     }
 }
