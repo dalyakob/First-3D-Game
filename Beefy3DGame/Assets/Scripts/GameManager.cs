@@ -22,25 +22,17 @@ public class GameManager : MonoBehaviour
     {
         IsGameOver = true;
         playerMovement.enabled = false;
-        gameOverScreen.SetActive(true);
-        Invoke(nameof(RestartGame), 2);
+        gameOverScreen.SetActive(true); 
     } 
-    public void RestartGame()
-    { 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
-    }
+
     public void LevelCompleted()
     {
         if (!IsGameOver)
         {
-            levelCompleteScreen.SetActive(true);
-            Invoke(nameof(NextLevel), 2);
+            levelCompleteScreen.SetActive(true); 
         }
     }
-    public void NextLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
+
     public void TogglePause()
     {
         if(Time.timeScale == 0)
